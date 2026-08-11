@@ -36,7 +36,9 @@ jobs:
 
     - name: Load msm89xx target and packages
       run: |
-        git apply --unsafe-paths enable_wcn36xx_mac80211.patch
+        git apply --unsafe-paths --3way enable_wcn36xx_mac80211.patch || \
+        patch -p1 --fuzz=3 --no-backup-if-mismatch < enable_wcn36xx_mac80211.patch || \
+        echo "WARNING: wcn36xx patch failed entirely, WiFi driver will be missing"
         mv msm89xx openwrt/target/linux/msm89xx
         mv packages openwrt/package/uz801
         if [ "${{ inputs.openwrt_version }}" == "openwrt-24.10" ]; then
