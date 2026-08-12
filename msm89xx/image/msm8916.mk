@@ -70,7 +70,7 @@ define Device/generic-m9s
   FILESYSTEMS := squashfs
   DEVICE_PACKAGES := configs-mifi wpad-basic-wolfssl rmtfs uci-usb-gadget \
                      block-mount f2fs-tools prepare-rootfs-data \
-                     msm-firmware-dumper
+                     msm-firmware-dumper kmod-fbtft-gc9107 router-display
 endef
 TARGET_DEVICES += generic-m9s
 
